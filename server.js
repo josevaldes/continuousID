@@ -28,8 +28,11 @@ var app = express();
 
 // database configuration
 //mongoose.connect(process.env.MONGODB);
-mongoose.connect('mongodb://' + (process.env.DB_PORT_27017_TCP_ADDR || process.env.MONGODB) + '/nb6');
+//mongoose.connect('mongodb://' + (process.env.DB_PORT_27017_TCP_ADDR || process.env.MONGODB) + '/nb6');
+mongoose.connect(process.env.MONGODB);
+
 mongoose.connection.on('error', function() {
+  console.log(process.env.MONGODB);
   console.log('MongoDB Connection Error. Please make sure that MongoDB is running.');
   process.exit(1);
 });
